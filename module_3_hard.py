@@ -24,18 +24,15 @@ def turing_machine(data_structure):
         # Реализация блока логики "машины"
         if sign == "'":
             apostrophe_trigger = not apostrophe_trigger # Если строка начинается или заканчивается - срабатывает логический триггер
-            continue
         elif apostrophe_trigger:
-            count_sign += 1 # Если с "ленты считался" символ строки - подсчитываем его 
-            continue
+            count_sign += 1 # Если с "ленты считался" символ строки - подсчитываем его
         elif sign in digits:
             digit_flag = True # Начинаются цифры (а может она всего лишь одна)
             full_digit += sign # Формируем из цифр полное число           
-        else:
-            if digit_flag: #Если ряд цифр подряд "на ленте" закончился
-                count_sign += int(full_digit) # Суммируем значение счетчика с полным числом
-                digit_flag = False # Сбрасываем флаг цифр
-                full_digit = '' # Сбрасываем числовой накопитель
+        elif digit_flag: #Если ряд цифр подряд "на ленте" закончился
+            count_sign += int(full_digit) # Суммируем значение счетчика с полным числом
+            digit_flag = False # Сбрасываем флаг цифр
+            full_digit = '' # Сбрасываем числовой накопитель
     return count_sign
 
 
